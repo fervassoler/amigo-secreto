@@ -3,6 +3,8 @@
 Este projeto é parte de um challenge do curso Oracle Next Education (ONE), realizado pela Oracle em parceria com a Alura, com o objetivo de capacitar talentos em tecnologia. 
 Neste challenge estamos criando uma aplicação web para realizar o sorteio de um amigo secreto.
 
+Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-secreto/) do GitHub Pages!
+
 ![Image](assets/tela_inicial.png)
 _______
 
@@ -34,6 +36,9 @@ _______
 
 ## Como Executar o Projeto
 
+Acesse o [GitHub Pages](https://fervassoler.github.io/amigo-secreto/) deste projeto para testar a aplicação!
+
+Para testar localmente siga os seguintes passos:
 1. Clone o repositório:
     ```bash
     git clone https://github.com/fervassoler/amigo-secreto
