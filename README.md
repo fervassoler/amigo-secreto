@@ -36,11 +36,11 @@ _______
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/challenge-amigo-secreto.git
+    git clone https://github.com/fervassoler/amigo-secreto
     ```
 2. Navegue até o diretório do projeto:
     ```bash
-    cd challenge-amigo-secreto
+    cd amigo-secreto
     ```
 3. Abra a página inicial:
     - No Linux ou Mac:
