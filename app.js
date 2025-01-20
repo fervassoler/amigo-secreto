@@ -3,9 +3,8 @@ let sorteioRealizado = false;
 
 // Adiciona um amigo à lista
 function adicionarAmigo() {
-    const amigo = document.getElementById('amigo').value.trim();
-    amigo = capitalizar(amigo);
-    
+    const amigo = capitalizar(document.getElementById('amigo').value.trim());
+  
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
     } else {
