@@ -4,7 +4,7 @@ let sorteioRealizado = false;
 // Adiciona um amigo à lista
 function adicionarAmigo() {
     const amigo = capitalizar(document.getElementById('amigo').value.trim());
-  
+
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
     } else {
@@ -21,8 +21,13 @@ function adicionarAmigo() {
 }
 
 // coloca primeira letra de cada palavra em maiuscula
-function capitalizar(texto) { 
-    return texto.split(' ').map(palavra => palavra[0]?.toUpperCase() + palavra.slice(1).toLowerCase()).join(' ');
+function capitalizar(texto) {
+    if (texto !='') {
+        return texto.split(' ').map(palavra => palavra[0]?.toUpperCase() + palavra.slice(1).toLowerCase()).join(' ');
+    }
+    else {
+        return texto;
+    }
 }
 
 // Sorteia um amigo da lista
