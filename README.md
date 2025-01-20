@@ -23,7 +23,7 @@ _______
 <br>
 
 - **Reiniciar:**
-Ao clicar no icone de reiniciar amigo secreto a lista de amigos será resetada para iniciar novamnte a adição dos nomes para o sorteio.
+Ao clicar no icone de reiniciar amigo secreto a lista de amigos será resetada para iniciar novamente a adição dos nomes para o sorteio.
 <br><img src="assets/restart.svg" style="width: 80px;"><br>
   
 _______
