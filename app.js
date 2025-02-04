@@ -20,23 +20,47 @@ function validaDuplicado(amigo) {
     return amigos.includes(amigo);
 }
 
-// Adiciona um amigo à lista
-function adicionarAmigo() {
-    const amigoInput = document.getElementById('amigo');
-    const amigo = capitalizar(amigoInput.value.trim());
+function validaTrataInput(amigoInput) {
 
+    // remove espaços do começo e final do texto
+    const amigo = capitalizar(amigoInput.trim());
+
+    // verifica se o campo está vazio
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
         return;
     }
 
-    if (validaDuplicado(amigo)) {
-        alert('Amigo já adicionado!');
+    // valida se o nome possui apenas letras
+    if (!/^[a-zA-Z\s]+$/.test(amigo)) {
+        alert(`Nome ${amigo} inválido! O nome deve conter apenas letras!`);
         return;
     }
 
-    document.getElementById('resultado').innerHTML = '';
+    // verifica se o amigo já foi adicionado
+    if (validaDuplicado(amigo)) {
+        alert(`Amigo ${amigo} já adicionado!`);
+        return;
+    }
     amigos.push(amigo);
+}
+
+// Adiciona um amigo à lista
+function adicionarAmigo() {
+    const amigoInput = document.getElementById('amigo').value;
+
+    //adiciona amigos separados por vírgula
+    if (amigoInput.includes(',')) {
+        //split a string em um array
+        let amigosInput = amigoInput.split(',');
+        for (let item of amigosInput) {
+           validaTrataInput(item);
+        }
+    }else{
+        validaTrataInput(amigoInput);
+    }
+
+    document.getElementById('resultado').innerHTML = '';
     atualizarListaAmigos();
     limparElemento("amigo");
 }
@@ -65,8 +89,6 @@ function sortearAmigo() {
         alterarValorElemento('resultado', sorteado);
         document.getElementById("hiden-elements").classList.remove("hidden");
         document.getElementById("auto-sorteio").classList.add("hidden");
-    
-        console.log("removeu");
         sorteioRealizado = true;
     }else{
         alterarValorElemento('resultado', sorteado);

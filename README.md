@@ -32,6 +32,8 @@ _______
 - **Adicionar amigos:** 
   - Ao clicar em "Adicionar" o nome do amigo inserido no campo irá aparecer em uma lista abaixo. 
   - Caso o campo de texto esteja vazio ou o nome já esteja na lista irá aparecer um alerta pedindo para digitar um nome válido.
+  - Caso o nome possua caracteres diferentes de letras será exibido uma mensagem que o nome é inválido.
+  - Caso deseje adicionar mais de um amigo por vez coloque os nomes dos amigos separados por virgula ex: (ana, maria, joao)
   <br><img src="assets/campo_insert.png" style="heigt: 80px;"><br>
 <br>
 
