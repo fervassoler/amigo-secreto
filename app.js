@@ -64,6 +64,7 @@ function sortearAmigo() {
     if (amigos.length == 1) {
         alterarValorElemento('resultado', sorteado);
         document.getElementById("hiden-elements").classList.remove("hidden");
+        document.getElementById("auto-sorteio").classList.add("hidden");
     
         console.log("removeu");
         sorteioRealizado = true;
