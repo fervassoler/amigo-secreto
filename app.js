@@ -110,11 +110,14 @@ function reiniciarAmigoSecreto() {
 function ocultarResultado(){
     if (!sorteioRealizado) {
         alterarValorElemento('resultado', 'Continue sorteando!');
+        document.getElementById("auto-sorteio").classList.remove("hidden");
+        document.getElementById("hiden-elements").classList.add("hidden");
     }
     else{
         alterarValorElemento('resultado', '');
         reiniciarAmigoSecreto();
     }
+    document.getElementById("auto-sorteio").classList.remove("hidden");
     document.getElementById("hiden-elements").classList.add("hidden");
 }
 
