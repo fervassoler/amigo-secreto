@@ -71,6 +71,7 @@ function sortearAmigo() {
     }else{
         alterarValorElemento('resultado', sorteado);
         document.getElementById("hiden-elements").classList.remove("hidden");
+        document.getElementById("auto-sorteio").classList.remove("hidden");
         console.log("removeu");
         toRemove = sorteado;
     }
