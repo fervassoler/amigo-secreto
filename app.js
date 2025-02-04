@@ -1,47 +1,90 @@
 let amigos = [];
 let sorteioRealizado = false;
+let toRemove = '';
+let sorteado = '';
+
+// Coloca a primeira letra de cada palavra em maiúscula
+function capitalizar(texto) {
+    return texto.split(' ')
+                .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase())
+                .join(' ');
+}
+
+// Verifica se o campo está vazio
+function validaCampoVazio(texto) {
+    return texto === '';
+}
+
+// Verifica se o amigo já foi adicionado
+function validaDuplicado(amigo) {
+    return amigos.includes(amigo);
+}
 
 // Adiciona um amigo à lista
 function adicionarAmigo() {
-    const amigo = capitalizar(document.getElementById('amigo').value.trim());
+    const amigoInput = document.getElementById('amigo');
+    const amigo = capitalizar(amigoInput.value.trim());
 
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
-    } else {
-        if (validaDuplicado(amigo)) {
-            alert('Amigo já adicionado!');
-        } else {
-            document.getElementById('resultado').innerHTML = '';
-            amigos.push(amigo);
-            atualizarListaAmigos();
-            limparElemento('amigo');
-            sorteioRealizado = false;
-        }
+        return;
     }
-}
 
-// coloca primeira letra de cada palavra em maiuscula
-function capitalizar(texto) {
-    if (texto !='') {
-        return texto.split(' ').map(palavra => palavra[0]?.toUpperCase() + palavra.slice(1).toLowerCase()).join(' ');
+    if (validaDuplicado(amigo)) {
+        alert('Amigo já adicionado!');
+        return;
     }
-    else {
-        return texto;
-    }
+
+    document.getElementById('resultado').innerHTML = '';
+    amigos.push(amigo);
+    atualizarListaAmigos();
+    limparElemento("amigo");
 }
 
 // Sorteia um amigo da lista
 function sortearAmigo() {
     if (sorteioRealizado) {
         alert('Sorteio já realizado, adicione novos amigos para sortear novamente!');
-    } else if (amigos.length === 0) {
+        ocultarResultado();
+        return;
+    } 
+    if (amigos.length === 0) {
         alert('Adicione amigos para sortear!');
-    } else {
-        const sorteado = amigos[Math.floor(Math.random() * amigos.length)];
-        reiniciarAmigoSecreto();
-        alterarValorElemento('resultado', sorteado);
-        sorteioRealizado = true;
+        return;
+    } 
+    
+    if(toRemove){
+        amigos = amigos.filter(amigo => amigo !== toRemove);
+        toRemove = '';
     }
+    
+    sorteado = amigos[Math.floor(Math.random() * amigos.length)];
+    limparElemento('amigo');
+    limparElemento('listaAmigos');
+    if (amigos.length == 1) {
+        alterarValorElemento('resultado', sorteado);
+        document.getElementById("hiden-elements").classList.remove("hidden");
+    
+        console.log("removeu");
+        sorteioRealizado = true;
+    }else{
+        alterarValorElemento('resultado', sorteado);
+        document.getElementById("hiden-elements").classList.remove("hidden");
+        console.log("removeu");
+        toRemove = sorteado;
+    }
+}
+
+function resortearAmigo() {
+    let nomeSorteado = sorteado;
+    while(sorteado == nomeSorteado) {
+        sorteado = amigos[Math.floor(Math.random() * amigos.length)];
+    }
+    limparElemento('amigo');
+    limparElemento('listaAmigos');
+    alterarValorElemento('resultado', sorteado);
+    document.getElementById("hiden-elements").classList.add("hidden");
+    toRemove = sorteado;
 }
 
 // Atualiza a lista de amigos no HTML
@@ -49,30 +92,36 @@ function atualizarListaAmigos() {
     alterarValorElemento('listaAmigos', amigos.map(amigo => `<li>${amigo}</li>`).join(''));
 }
 
-// Limpa o campo de entrada do nome do amigo
-function limparElemento(nome_campo) {
-    document.getElementById(nome_campo).value = '';
-    document.getElementById(nome_campo).innerHTML = '';
-}
-
 // Limpa a lista de amigos no HTML
 function reiniciarAmigoSecreto() {
     limparElemento('amigo');
     limparElemento('resultado');
     limparElemento('listaAmigos');
+    document.getElementById("hiden-elements").classList.add("hidden");
     amigos = [];
     sorteioRealizado = false;
+    sorteado = '';
+    toRemove = '';
+}
+
+
+function ocultarResultado(){
+    if (!sorteioRealizado) {
+        alterarValorElemento('resultado', 'Continue sorteando!');
+    }
+    else{
+        alterarValorElemento('resultado', '');
+        reiniciarAmigoSecreto();
+    }
+    document.getElementById("hiden-elements").classList.add("hidden");
+}
+
+// Limpa o valor de um elemento
+function limparElemento(elemento) {
+    alterarValorElemento(elemento, '');
+    document.getElementById(elemento).value = '';
 }
 
 function alterarValorElemento(elemento, valor) {
     document.getElementById(elemento).innerHTML = valor;
-}
-
-// Verifica se o campo está vazio
-function validaCampoVazio(campo) {
-    return campo == '';
-}
-
-function validaDuplicado(amigo) {
-    return amigos.includes(amigo);
 }
