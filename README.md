@@ -83,21 +83,26 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
 
 - <img alt="HTML" src="https://img.shields.io/badge/HTML-f79a4f?style=for-the-badge&logo=html5&logoColor=" style="vertical-align: middle;"/> 
 - <img alt="CSS" src="https://img.shields.io/badge/CSS-f79a4f?&style=for-the-badge&logo=css3&logoColor=36945d" style="vertical-align: middle;"/> 
-- <i
+- <img alt="JS" src="https://img.shields.io/badge/JavaScript-f79a4f?style=for-the-badge&logo=javascript&logoColor=ffd02a" style ="vertical-align: middle;"/>
 
 ## Descrição Técnica
 
 ### Estrutura de arquivos
     .
-    ├── assets                                 # imagens usadas no projeto
+    ├── assets                         # imagens usadas no projeto
     |   ├── amigo-secreto.png
     |   ├── play_circle_outline.png
     |   └── restart.svg
-    ├── [app.js](#appjs)                        # script javascript que controla a aplicação
-    ├── [index.html](#indexhtml)                # página inicial com estrutura html
-    ├── [style.css](#stylecss)                  # folha de estilo usada no front-end
-    └── [README.md]                            # README com a descrição do projeto
+    ├── app.js                         # script javascript que controla a aplicação
+    ├── index.html                     # página inicial com estrutura html
+    ├── style.css                      # folha de estilo usada no front-end
+    └── README.md                      # README com a descrição do projeto
+    
+- [app.js](appjs): Script JavaScript que controla a aplicação.
+- [index.html](indexhtml): Página inicial com estrutura HTML.
+- [style.css](stylecss): Folha de estilo usada no front-end.
 
+--------
 
 ### [app.js](./app.js)
 
@@ -126,6 +131,7 @@ O arquivo [app.js](./app.js) contém a lógica principal da aplicação de sorte
 
 Essas funções trabalham juntas para fornecer a funcionalidade completa da aplicação de sorteio de amigo secreto, desde a adição de amigos até a realização e reinício do sorteio.
 
+--------
 
 ### [index.html](./index.html)
 
@@ -170,6 +176,8 @@ O arquivo [index.html](./index.html) contém a estrutura principal da aplicaçã
 - **`<script src="app.js" defer></script>`**: Inclui o arquivo JavaScript [app.js](./app.js) que contém a lógica da aplicação, com o atributo `defer` para garantir que o script seja executado após o carregamento completo do HTML.
 
 Essa estrutura HTML define a interface do usuário e a interação básica para a aplicação de sorteio de amigo secreto.
+
+--------
 
 ### [style.css](./style.css)
 
