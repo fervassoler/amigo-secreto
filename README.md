@@ -88,16 +88,18 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
 ## Descrição Técnica
 
 ### Estrutura de arquivos
+
     .
-    ├── assets                         # imagens usadas no projeto
-    |   ├── amigo-secreto.png
-    |   ├── play_circle_outline.png
-    |   └── restart.svg
-    ├── app.js                         # script javascript que controla a aplicação
-    ├── index.html                     # página inicial com estrutura html
-    ├── style.css                      # folha de estilo usada no front-end
+    └── assets                         # imagens usadas no projeto
+        ├── amigo-secreto.png
+        ├── play_circle_outline.png
+        └── restart.svg
+    └── app.js                         # script javascript que controla a aplicação
+    └── index.html                     # página inicial com estrutura html
+    └── style.css                      # folha de estilo usada no front-end
     └── README.md                      # README com a descrição do projeto
-    
+
+
 - [app.js](appjs): Script JavaScript que controla a aplicação.
 - [index.html](indexhtml): Página inicial com estrutura HTML.
 - [style.css](stylecss): Folha de estilo usada no front-end.
@@ -139,41 +141,69 @@ O arquivo [index.html](./index.html) contém a estrutura principal da aplicaçã
 
 #### Estrutura do Documento
 
+    .
+    html
+    └── head
+        ├── meta tags (charset, viewport)
+        ├── link stylesheet (style.css)
+        ├── link fontes externas
+        └── title (Amigo Secreto)
+    └── body
+        └── main.main-content
+            ├── header.header-banner
+            │   ├── h1.main-title
+            │   └── img (amigo-secreto.png)
+            └── section.input-section
+                ├── h2.section-title
+                ├── div.input-wrapper
+                │   ├── input#amigo
+                │   ├── button.button-add
+                │   └── img.button-restart
+                ├── ul#listaAmigos
+                ├── ul#resultado
+                └── div.button-container
+                    ├── button.button-draw
+                    └── div#hiden-elements
+                        ├── button#auto-sorteio
+                        └── button#limpar-resposta
+        └── script (app.js)
+
+
 - **DOCTYPE e `<html>`**: Define o tipo de documento como HTML5 e especifica o idioma como português do Brasil (`pt-br`).
-- **`<head>`**: Contém metadados e links para recursos externos, incluindo:
-  - `<meta charset="UTF-8">`: Define a codificação de caracteres como UTF-8.
-  - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`: Configura a viewport para garantir a responsividade.
-  - `<link rel="stylesheet" href="style.css">`: Link para a folha de estilos CSS.
+ - **`<head>`**: Contém metadados e links para recursos externos, incluindo:
+  - `<meta>`: Define a codificação de caracteres como UTF-8.
+  - `<meta>`: Configura a viewport para garantir a responsividade.
+  - `<link>`: Link para a folha de estilos CSS.
   - Links para fontes do Google Fonts.
-  - `<title>Amigo Secreto</title>`: Define o título da página.
+  - `<title>`: Define o título da página.
 
 #### Corpo do Documento (`<body>`)
 
-- **`<main class="main-content">`**: Elemento principal que contém todo o conteúdo da aplicação.
-  - **`<header class="header-banner">`**: Cabeçalho da aplicação contendo:
-    - `<h1 class="main-title">Amigo Secreto</h1>`: Título principal da aplicação.
-    - `<img src="assets/amigo-secreto.png" alt="Imagem representativa de amigo secreto">`: Imagem representativa do amigo secreto.
-  - **`<section class="input-section">`**: Seção de entrada de dados contendo:
-    - `<h2 class="section-title">Digite o nome dos seus amigos</h2>`: Título da seção.
-    - **`<div class="input-wrapper">`**: Contêiner para os elementos de entrada:
-      - `<input type="text" id="amigo" class="input-name" placeholder="Digite um nome">`: Campo de entrada para digitar o nome do amigo.
-      - `<button class="button-add" onclick="adicionarAmigo()">Adicionar</button>`: Botão para adicionar o amigo à lista.
-      - `<img class="button-restart" src="assets/restart.svg" alt="Ícone para reiniciar lista" title="Reiniciar Amigo Secreto" onclick="reiniciarAmigoSecreto()">`: Ícone para reiniciar a lista de amigos.
-    - `<ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>`: Lista de amigos adicionados.
-    - `<ul id="resultado" class="result-list" aria-live="polite"></ul>`: Lista para exibir o resultado do sorteio.
-    - **`<div class="button-container">`**: Contêiner para os botões de ação:
-      - `<button class="button-draw" onclick="sortearAmigo()" aria-label="Sortear amigo secreto">`: Botão para sortear um amigo.
-        - `<img src="assets/play_circle_outline.png" alt="Ícone para sortear">`: Ícone do botão de sorteio.
+- **`<main>`**: Elemento principal que contém todo o conteúdo da aplicação.
+  - **`<header">`**: Cabeçalho da aplicação contendo:
+    - `</h1>`: Título principal da aplicação.
+    - `<img>`: Imagem representativa do amigo secreto.
+  - **`<section>`**: Seção de entrada de dados contendo:
+    - `<h2>`: Título da seção.
+    - **`<div>`**: Contêiner para os elementos de entrada:
+      - `<input>`: Campo de entrada para digitar o nome do amigo.
+      - `<button>`: Botão para adicionar o amigo à lista.
+      - `<img>`: Ícone para reiniciar a lista de amigos.
+    - `<ul>`: Lista de amigos adicionados.
+    - `<ul>`: Lista para exibir o resultado do sorteio.
+    - **`<div>`**: Contêiner para os botões de ação:
+      - `<button>`: Botão para sortear um amigo.
+        - `<img>`: Ícone do botão de sorteio.
         - Texto do botão: "Sortear amigo".
-      - **`<div id="hiden-elements" class="button-hidden-container hidden">`**: Contêiner para botões adicionais, inicialmente oculto:
-        - `<button id="auto-sorteio" class="button-draw hidden-button" onclick="resortearAmigo()" aria-label="Sortear amigo secreto">`: Botão para resortear caso o próprio nome seja sorteado.
+      - **`<div>`**: Contêiner para botões adicionais, inicialmente oculto:
+        - `<button>`: Botão para resortear caso o próprio nome seja sorteado.
           - Texto do botão: "Me sorteei".
-        - `<button id="limpar-resposta" class="button-draw hidden-button" onclick="ocultarResultado()" aria-label="Sortear amigo secreto">`: Botão para limpar o resultado do sorteio.
+        - `<button>`: Botão para limpar o resultado do sorteio.
           - Texto do botão: "Limpar resultado".
 
 #### Script
 
-- **`<script src="app.js" defer></script>`**: Inclui o arquivo JavaScript [app.js](./app.js) que contém a lógica da aplicação, com o atributo `defer` para garantir que o script seja executado após o carregamento completo do HTML.
+- **`<script>`**: Inclui o arquivo JavaScript [app.js](./app.js) que contém a lógica da aplicação, com o atributo `defer` para garantir que o script seja executado após o carregamento completo do HTML.
 
 Essa estrutura HTML define a interface do usuário e a interação básica para a aplicação de sorteio de amigo secreto.
 
