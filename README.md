@@ -5,7 +5,26 @@ Neste challenge estamos criando uma aplicação web para realizar o sorteio de u
 
 Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-secreto/) do GitHub Pages!
 
-![Image](assets/tela_inicial.png)
+<br>
+Tela inicial: web | mobile
+
+<img src="assets/tela_inicial.png" alt="Image" width="500">  <img src="assets/tela_inicial_mobile.jpg" alt="Image" height="291">
+
+<br>
+Tela com lista de amigos: web | mobile
+
+<img src="assets/tela_inicial_lista_amigos.png" alt="Image" width="500">  <img src="assets/lista_amigos_mobile.jpg" alt="Image" height="265">
+
+<br>
+Tela após inicio do sorteio: web | mobile
+
+<img src="assets/tela_inicial_botoes_sorteio.jpg" alt="Image" width="500">  <img src="assets/botoes_sorteio_mobile.jpg" alt="Image" height="267">
+
+<br>
+Tela após limpar resultados: web | mobile
+
+<img src="assets/tela_limpar_resultados.jpg" alt="Image" width="500">  <img src="assets/tela_limpar_resultados_mobile.jpg" alt="Image" height="265">
+
 _______
 
 ## Funcionalidades
@@ -17,7 +36,9 @@ _______
 <br>
 
 - **Sorteio aleatório:** 
-  - Ao clicar no botão "Sortear Amigo", um nome da lista será selecionado aleatoriamente e exibido na tela. 
+  - Ao clicar no botão "Sortear Amigo", um nome da lista será selecionado aleatoriamente e exibido na tela.
+  - O sorteio termina quando todos os nomes da lista já tiverem sido sorteados.
+  - Caso o nome sorteado seja o da própra pessoa, tem a possibilidade de resortear clicando n botão Me sorteei.
   - Caso o sorteio já tenha ocorrido ou ainda não tenha nenhum amigo adicionado irá aparecer um alerta pedindo para adicionar os nomes dos amigos.
   <br><img src="assets/botao_sortear.png" style="heigt: 80px;"><br>
 <br>
@@ -25,7 +46,15 @@ _______
 - **Reiniciar:**
 Ao clicar no icone de reiniciar amigo secreto a lista de amigos será resetada para iniciar novamente a adição dos nomes para o sorteio.
 <br><img src="assets/restart.svg" style="width: 80px;"><br>
-  
+
+- **Resortear:**
+Ao clicar no botão "Me sorteei" será realizado um novo sorteio aleaório com os nomes restantes.
+<br><img src="assets/botao_auto_sorteio.jpg" style="width: 150px;"><br>
+
+- **Limpar Resultado:**
+Ao clicar no botão "Limpar resultado" o nome sorteado será apagado da tela.
+<br><img src="assets/botao_limpar_resultados.jpg" style="width: 150px;"><br>
+
 _______
 
 ## Tecnologias Utilizadas
