@@ -85,6 +85,8 @@ function resortearAmigo() {
     limparElemento('listaAmigos');
     alterarValorElemento('resultado', sorteado);
     document.getElementById("hiden-elements").classList.add("hidden");
+    document.getElementById("limpar-resposta").classList.remove("hidden");
+    
     toRemove = sorteado;
 }
 
