@@ -31,6 +31,13 @@ function validaTrataInput(amigoInput) {
         return;
     }
 
+    // valida se o nome possui apenas letras
+    if (!/^[a-zA-Z\s]+$/.test(amigo)) {
+        alert(`Nome ${amigo} inválido! O nome deve conter apenas letras!`);
+        return;
+    }
+
+    // verifica se o amigo já foi adicionado
     if (validaDuplicado(amigo)) {
         alert(`Amigo ${amigo} já adicionado!`);
         return;
@@ -82,8 +89,6 @@ function sortearAmigo() {
         alterarValorElemento('resultado', sorteado);
         document.getElementById("hiden-elements").classList.remove("hidden");
         document.getElementById("auto-sorteio").classList.add("hidden");
-    
-        console.log("removeu");
         sorteioRealizado = true;
     }else{
         alterarValorElemento('resultado', sorteado);
