@@ -64,6 +64,7 @@ function sortearAmigo() {
     if (amigos.length == 1) {
         alterarValorElemento('resultado', sorteado);
         document.getElementById("hiden-elements").classList.remove("hidden");
+        document.getElementById("auto-sorteio").classList.add("hidden");
     
         console.log("removeu");
         sorteioRealizado = true;
@@ -83,7 +84,8 @@ function resortearAmigo() {
     limparElemento('amigo');
     limparElemento('listaAmigos');
     alterarValorElemento('resultado', sorteado);
-    document.getElementById("hiden-elements").classList.add("hidden");
+    document.getElementById("auto-sorteio").classList.add("hidden");
+    
     toRemove = sorteado;
 }
 
@@ -108,11 +110,14 @@ function reiniciarAmigoSecreto() {
 function ocultarResultado(){
     if (!sorteioRealizado) {
         alterarValorElemento('resultado', 'Continue sorteando!');
+        document.getElementById("auto-sorteio").classList.remove("hidden");
+        document.getElementById("hiden-elements").classList.add("hidden");
     }
     else{
         alterarValorElemento('resultado', '');
         reiniciarAmigoSecreto();
     }
+    document.getElementById("auto-sorteio").classList.remove("hidden");
     document.getElementById("hiden-elements").classList.add("hidden");
 }
 
