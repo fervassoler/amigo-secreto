@@ -27,7 +27,7 @@ function validaTrataInput(amigoInput) {
         return;
     }
 
-    if (!/^[\p{L} ]+$/u.test(amigo)) {
+    if (!/^[a-zA-Zà-úÀ-Ú ]+$/u.test(amigo)) {
         alert(`Nome ${amigo} inválido! O nome deve conter apenas letras!`);
         return;
     }
