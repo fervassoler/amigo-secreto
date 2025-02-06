@@ -186,8 +186,13 @@ ul {
     list-style-type: none;
     color: var(--color-text);
     font-family: "Inter", sans-serif;
-    font-size: 18px;
+    font-size: clamp(14px, 7vw, 18px);
     margin-top: 20px;
+}
+
+li {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
 }
 
 .result-list {
