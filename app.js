@@ -2,42 +2,35 @@ let amigos = [];
 let sorteioRealizado = false;
 let toRemove = '';
 let sorteado = '';
+let sorteioIniciado = false;
 
 // Coloca a primeira letra de cada palavra em maiúscula
 function capitalizar(texto) {
     return texto.split(' ')
-                .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase())
-                .join(' ');
+        .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase())
+        .join(' ');
 }
 
-// Verifica se o campo está vazio
-function validaCampoVazio(texto) {
-    return texto === '';
-}
+// Validacoes campo vazio e duplicado
+const validaCampoVazio = texto => texto === '';
+const validaDuplicado = amigo => amigos.includes(amigo);
 
-// Verifica se o amigo já foi adicionado
-function validaDuplicado(amigo) {
-    return amigos.includes(amigo);
-}
 
+// aplica validacoes e trata cada amigo no input do usuário
 function validaTrataInput(amigoInput) {
 
-    // remove espaços do começo e final do texto
     const amigo = capitalizar(amigoInput.trim());
 
-    // verifica se o campo está vazio
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
         return;
     }
 
-    // valida se o nome possui apenas letras
     if (!/^[a-zA-Z\s]+$/.test(amigo)) {
         alert(`Nome ${amigo} inválido! O nome deve conter apenas letras!`);
         return;
     }
 
-    // verifica se o amigo já foi adicionado
     if (validaDuplicado(amigo)) {
         alert(`Amigo ${amigo} já adicionado!`);
         return;
@@ -45,24 +38,17 @@ function validaTrataInput(amigoInput) {
     amigos.push(amigo);
 }
 
-// Adiciona um amigo à lista
+// Adiciona amigos à lista
 function adicionarAmigo() {
     const amigoInput = document.getElementById('amigo').value;
 
-    //adiciona amigos separados por vírgula
-    if (amigoInput.includes(',')) {
-        //split a string em um array
-        let amigosInput = amigoInput.split(',');
-        for (let item of amigosInput) {
-           validaTrataInput(item);
-        }
-    }else{
-        validaTrataInput(amigoInput);
-    }
+    // Adiciona cada amigo separado por vírgula
+    amigoInput.split(',').forEach(item => validaTrataInput(item));
 
     document.getElementById('resultado').innerHTML = '';
+    
     atualizarListaAmigos();
-    limparElemento("amigo");
+    limparElementos("amigo");
 }
 
 // Sorteia um amigo da lista
@@ -71,44 +57,47 @@ function sortearAmigo() {
         alert('Sorteio já realizado, adicione novos amigos para sortear novamente!');
         ocultarResultado();
         return;
-    } 
+    }
+
     if (amigos.length === 0) {
         alert('Adicione amigos para sortear!');
         return;
-    } 
-    
-    if(toRemove){
+    }
+
+    if (toRemove) {
         amigos = amigos.filter(amigo => amigo !== toRemove);
         toRemove = '';
     }
-    
+
+    document.getElementById('adicionar-amigo').disabled = true
     sorteado = amigos[Math.floor(Math.random() * amigos.length)];
-    limparElemento('amigo');
-    limparElemento('listaAmigos');
+
     if (amigos.length == 1) {
-        alterarValorElemento('resultado', sorteado);
-        document.getElementById("hiden-elements").classList.remove("hidden");
-        document.getElementById("auto-sorteio").classList.add("hidden");
         sorteioRealizado = true;
-    }else{
-        alterarValorElemento('resultado', sorteado);
-        document.getElementById("hiden-elements").classList.remove("hidden");
-        document.getElementById("auto-sorteio").classList.remove("hidden");
-        console.log("removeu");
+    } else {
         toRemove = sorteado;
     }
+
+    // se sorteioRealizado acao = add else remove
+    let acao = sorteioRealizado ? true : false;
+
+    limparElementos('amigo', 'listaAmigos');
+    alterarValorElemento('resultado', sorteado);
+
+    alterarClasseElemento("hiden-elements", "remove", "hidden");
+    document.getElementById('auto-sorteio').disabled = acao
 }
 
+// Re-sortear amigo caso o mesmo tenha sido sorteado
 function resortearAmigo() {
     let nomeSorteado = sorteado;
-    while(sorteado == nomeSorteado) {
+    while (sorteado == nomeSorteado) {
         sorteado = amigos[Math.floor(Math.random() * amigos.length)];
     }
-    limparElemento('amigo');
-    limparElemento('listaAmigos');
+    limparElementos('amigo', 'listaAmigos');
     alterarValorElemento('resultado', sorteado);
-    document.getElementById("auto-sorteio").classList.add("hidden");
-    
+    document.getElementById('auto-sorteio').disabled = true
+
     toRemove = sorteado;
 }
 
@@ -119,37 +108,43 @@ function atualizarListaAmigos() {
 
 // Limpa a lista de amigos no HTML
 function reiniciarAmigoSecreto() {
-    limparElemento('amigo');
-    limparElemento('resultado');
-    limparElemento('listaAmigos');
-    document.getElementById("hiden-elements").classList.add("hidden");
+    document.getElementById('adicionar-amigo').disabled = false
+    limparElementos('amigo', 'resultado', 'listaAmigos');
+    alterarClasseElemento(elemento = "hiden-elements", "add", "hidden");
     amigos = [];
     sorteioRealizado = false;
     sorteado = '';
     toRemove = '';
 }
 
+// Oculta o resultado do sorteio
+function ocultarResultado() {
+    document.getElementById('auto-sorteio').disabled = true
+    alterarClasseElemento("hiden-elements", "add", "hidden");
 
-function ocultarResultado(){
     if (!sorteioRealizado) {
         alterarValorElemento('resultado', 'Continue sorteando!');
-        document.getElementById("auto-sorteio").classList.remove("hidden");
-        document.getElementById("hiden-elements").classList.add("hidden");
     }
-    else{
+    else {
         alterarValorElemento('resultado', '');
         reiniciarAmigoSecreto();
     }
-    document.getElementById("auto-sorteio").classList.remove("hidden");
-    document.getElementById("hiden-elements").classList.add("hidden");
 }
 
-// Limpa o valor de um elemento
-function limparElemento(elemento) {
-    alterarValorElemento(elemento, '');
-    document.getElementById(elemento).value = '';
+// Limpa o valor de um ou mais elementos
+function limparElementos(...elementos) {
+    elementos.forEach(elemento => {
+        alterarValorElemento(elemento, '');
+        document.getElementById(elemento).value = '';
+    });
 }
 
+// Altera o valor de um elemento no HTML
 function alterarValorElemento(elemento, valor) {
     document.getElementById(elemento).innerHTML = valor;
 }
+
+// Adiciona ou remove uma classe css de um elemento
+function alterarClasseElemento(elemento, acao, classe) {
+    document.getElementById(elemento).classList[acao](classe);
+};
