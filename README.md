@@ -37,19 +37,19 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
 
 ### Tela Inicial
 #### Web | Mobile
-<img src="assets/tela_inicial.png" alt="Tela Inicial Web" height="290" width="500"> <img src="assets/tela_inicial_mobile.jpg" alt="Tela Inicial Mobile" height="290" width="150">
+<img src="assets/tela_inicial.png" alt="Tela Inicial Web" width="500"> <img src="assets/tela_inicial_mobile.jpg" alt="Tela Inicial Mobile" height="261">
 
 ### Tela com Lista de Amigos
 #### Web | Mobile
-<img src="assets/tela_inicial_lista_amigos.png" alt="Lista de Amigos Web" height="290" width="500"> <img src="assets/lista_amigos_mobile.jpg" alt="Lista de Amigos Mobile" height="290" width="150">
+<img src="assets/tela_inicial_lista_amigos.png" alt="Lista de Amigos Web" width="500"> <img src="assets/lista_amigos_mobile.jpg" alt="Lista de Amigos Mobile" height="261">
 
 ### Tela Após Início do Sorteio
 #### Web | Mobile
-<img src="assets/tela_inicial_botoes_sorteio.jpg" alt="Sorteio Web" height="290" width="500"> <img src="assets/botoes_sorteio_mobile.jpg" alt="Sorteio Mobile" height="290" width="150">
+<img src="assets/tela_inicial_botoes_sorteio.jpg" alt="Sorteio Web" width="500"> <img src="assets/botoes_sorteio_mobile.jpg" alt="Sorteio Mobile" height="261">
 
 ### Tela Após Limpar Resultados
 #### Web | Mobile
-<img src="assets/tela_limpar_resultados.jpg" alt="Limpar Resultados Web" height="290" width="500"> <img src="assets/tela_limpar_resultados_mobile.jpg" alt="Limpar Resultados Mobile" height="290" width="150">
+<img src="assets/tela_limpar_resultados.jpg" alt="Limpar Resultados Web" width="500"> <img src="assets/tela_limpar_resultados_mobile.jpg" alt="Limpar Resultados Mobile" height="261">
 
 ## Funcionalidades
 
@@ -65,6 +65,7 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
   - O sorteio termina quando todos os nomes da lista já tiverem sido sorteados.
   - Se o nome sorteado for o da própria pessoa, há a opção de resortear clicando no botão "Me sorteei".
   - Se o sorteio já tiver ocorrido ou não houver nenhum amigo adicionado, um alerta pedirá para adicionar os nomes dos amigos.
+  - O botão de adicionar amigos será desabilitado.
   <br><img src="assets/botao_sortear.png" alt="Botão Sortear" style="height: 80px;"><br>
 
 - **Reiniciar:**
@@ -72,7 +73,7 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
   <br><img src="assets/restart.svg" alt="Ícone Reiniciar" style="width: 80px;"><br>
 
 - **Resortear:**
-  - Ao clicar no botão "Me sorteei", será realizado um novo sorteio aleatório com os nomes restantes.
+  - Ao clicar no botão "Me sorteei", será realizado um novo sorteio aleatório com os nomes restantes, e o botão será desabilitado.
   <br><img src="assets/botao_auto_sorteio.jpg" alt="Botão Resortear" style="width: 150px;"><br>
 
 - **Limpar Resultado:**
