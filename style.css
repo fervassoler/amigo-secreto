@@ -4,8 +4,9 @@
     --color-tertiary: #C4C4C4;
     --color-button: #fe652b;
     --color-button-hover: #e55720;
-    --color-text: #444444;
+    --color-text: #494949;
     --color-white: #FFFFFF;
+    --color-element-border: #a8a3a3;
 }
 
 /* Estilos gerais */
@@ -13,6 +14,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+    width: 100%;
 }
 
 body {
@@ -26,33 +32,33 @@ body {
 .main-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
     width: 100%;
+    gap: 0px;
 }
 
 /* Banner */
 .header-banner {
     display: flex;
     align-items: center;
-    box-sizing: border-box;
-    padding: 40px 20% 0 20%;
+    justify-content: center;
+    padding: 40px 10% 0px 10%;
     width: 100%;
-    gap: 20px;
+    gap: 2%;
 }
 
 .header-banner img {
-    min-width: 50%;
-    min-height: 50%;
+    min-width: 60px;
     max-width: 277px;
     max-height: 450px;
 }
 
-
 /* Seção de entrada */
 .input-section {
+    padding-bottom: 0%;
     flex: 60%;
     background-color: var(--color-secondary);
-    border: 1px solid #000;
     border-radius: 64px 64px 0 0;
     display: flex;
     flex-direction: column;
@@ -63,79 +69,116 @@ body {
 
 /* Títulos */
 .main-title {
-    font-size: 48px;
+    font-size: clamp(20px, 12vw, 48px);
     font-family: "Merriweather", serif;
     font-weight: 900;
     font-style: italic;
     color: var(--color-white);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .section-title {
     font-family: "Inter", serif;
-    font-size: 36px;
+    font-size: clamp(20px, 10vw, 36px);
     font-weight: 700;
     color: var(--color-primary);
     margin: 10px 0;
     text-align: center;
 }
 
+.section-p {
+    font-family: "Inter", serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 10px 0;
+    text-align: left;
+}
+
+.input-container{
+    width: 115%;
+    max-width: 664px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 15px;
+    gap: 5px;
+}
+
 /* Contêineres de entrada e botão */
 .input-wrapper {
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
     width: 100%;
     max-width: 600px;
-    margin-top: 20px;
-}
-
-.input-name {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 25px 0 0 25px;
-    font-size: 16px;
-}
-
-.button-container {
-    width: 100%;
-    justify-content: center;
-    max-width: 300px;
-    padding: auto;
+    margin-left: 10%;
+    gap:0px;
 }
 
 /* Estilos de entrada de texto */
-.input-title {
-    flex: 1;
+.input-name {
+    width: 100%;
     padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-right: none;
+    border: 2px solid var(--color-element-border);
     border-radius: 25px 0 0 25px;
+    color: var(--color-text);
+    font-size: clamp(11px, 2vw, 16px);
     font-family: "Merriweather", serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px var(--color-element-border);
+    border-right: none;
+    min-width: 50%;
+}
+
+.input-name:focus-visible {
+    outline: var(--color-element-border);
+}
+
+.button-container {
+    padding: 0% 20% 0% 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 5px;
+}
+
+.button-img {
+    width: clamp(5%, 20%, 20%);
 }
 
 /* Estilos de botão */
 button {
-    padding: 15px 30px;
+    padding: 10px 20px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    border: 2px solid #000;
     border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--color-element-border);
+    box-shadow: 0 4px 8px var(--color-element-border);
     cursor: pointer;
 }
 
 .button-add {
-    margin-left: -2px;
+    display: flex;
     background-color: #4bac73;
     color: #ffffff;
     border-radius: 0 25px 25px 0;
+    max-width: 50%;
+    font-size: clamp(8px, 2vw, 16px);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .button-add:hover {
     background-color: #36945d;
+}
+
+.button-add:disabled {
+    background-color: #a8d5b1;
+    cursor: not-allowed;
 }
 
 /* Listas */
@@ -144,13 +187,14 @@ ul {
     color: var(--color-text);
     font-family: "Inter", sans-serif;
     font-size: 18px;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 .result-list {
-    margin-top: 15px;
+    margin-top: 0;
+    margin-bottom: 15px;
     color: #36945d;
-    font-size: 30px;
+    font-size: clamp(16px, 7vw, 30px);
     font-weight: bold;
     text-align: center;
 }
@@ -160,27 +204,28 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    min-width: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--color-button);
+    box-shadow: 0 4px 8px var(--color-button);
     color: var(--color-white);
     background-color: var(--color-button);
-    font-size: 16px;
+    font-size: clamp(8px, 2vw, 16px);
+    width: clamp(50px, 100%, 300px);
+    max-height: 55px;
+    padding: 5%;
     gap: 5px;
 }
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+    border: 2px solid var(--color-button-hover);
+    box-shadow: 0 4px 8px var(--color-button-hover);
 }
 
 .button-restart {
-    display: flex;
-    max-width: 54px;
-    max-height: 54px;
-    min-height: 30%;
-    min-width: 30px;
-    margin-left: 10px;
+    width: clamp(30px, 10vw, 50px);
+    height: clamp(30px, 10vw, 50px);
     cursor: pointer;
-    vertical-align: middle;
 }
 
 .button-restart:hover {
@@ -189,10 +234,10 @@ ul {
 
 .button-hidden-container{
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    max-width: 50%;
-    
+    align-items: center;
+    justify-content: center;
+    width: clamp(50px, 100%, 300px);
+    max-height: 55px;
 }
 
 .hidden{
@@ -200,18 +245,30 @@ ul {
 }
 
 .hidden-button {
+    box-sizing: border-box;
+    border: 2px solid #d38755;
+    box-shadow: 0 4px 8px  #d38755;
+    width: 50%;
+    height: clamp(30%, 10vw, 80%);
     background-color:#d38755;
-    font-size: 14px;
-    padding: 10px;
+    font-size: clamp(8px, vw, 14px);
 }
 
-.hidden:hover {
-    background-color: #ad6c40;
+.hidden-button:disabled{
+    background-color: #eab89a;
+    border: 2px solid #eab89a;
+    box-shadow: none;
+    cursor: not-allowed;
 }
 
 #limpar-resposta{
     background-color:#84709c;
+    border: 2px solid #84709c;
+    box-shadow: 0 4px 8px  #84709c;
 }
+
 #limpar-resposta:hover{
     background-color: #685a7a;
+    border: 2px solid #685a7a;
+    box-shadow: 0 4px 8px  #685a7a;
 }
