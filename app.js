@@ -19,14 +19,15 @@ const validaDuplicado = amigo => amigos.includes(amigo);
 // aplica validacoes e trata cada amigo no input do usuário
 function validaTrataInput(amigoInput) {
 
-    const amigo = capitalizar(amigoInput.trim());
+    const amigo = capitalizar(amigoInput.replace(/\s+/g, ' ').trim(););
+
 
     if (validaCampoVazio(amigo)) {
         alert('Digite o nome do amigo!');
         return;
     }
 
-    if (!/^[a-zA-Z\s]+$/.test(amigo)) {
+    if (!/^[\p{L} ]+$/u.test(amigo)) {
         alert(`Nome ${amigo} inválido! O nome deve conter apenas letras!`);
         return;
     }
