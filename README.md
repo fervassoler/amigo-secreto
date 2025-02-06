@@ -115,6 +115,7 @@ O arquivo [app.js](./app.js) contém a lógica principal da aplicação de sorte
 - `sorteioRealizado`: Booleano que indica se o sorteio já foi realizado.
 - `toRemove`: String que armazena o nome do amigo a ser removido após o sorteio.
 - `sorteado`: String que armazena o nome do amigo sorteado.
+- `sorteioIniciado`: String que armazena o nome do amigo sorteado.
 
 #### Funções
 
@@ -128,8 +129,9 @@ O arquivo [app.js](./app.js) contém a lógica principal da aplicação de sorte
 - **atualizarListaAmigos()**: Atualiza a lista de amigos no HTML.
 - **reiniciarAmigoSecreto()**: Limpa a lista de amigos e reinicia o sorteio.
 - **ocultarResultado()**: Oculta o resultado do sorteio e reinicia a aplicação se todos nomes já tiverem sido sorteados.
-- **limparElemento(elemento)**: Limpa o valor de um elemento HTML.
+- **limparElementos(...elementos):** Limpa o valor de um ou mais elementos HTML.
 - **alterarValorElemento(elemento, valor)**: Altera o valor de um elemento HTML.
+- **alterarClasseElemento(elemento, acao, classe):** Adiciona ou remove uma classe CSS de um elemento.
 
 Essas funções trabalham juntas para fornecer a funcionalidade completa da aplicação de sorteio de amigo secreto, desde a adição de amigos até a realização e reinício do sorteio.
 
@@ -140,7 +142,6 @@ Essas funções trabalham juntas para fornecer a funcionalidade completa da apli
 O arquivo [index.html](./index.html) contém a estrutura principal da aplicação de sorteio de amigo secreto. Abaixo está uma descrição das principais seções e elementos utilizados:
 
 #### Estrutura do Documento
-
     .
     html
     └── head
@@ -155,9 +156,11 @@ O arquivo [index.html](./index.html) contém a estrutura principal da aplicaçã
             │   └── img (amigo-secreto.png)
             └── section.input-section
                 ├── h2.section-title
-                ├── div.input-wrapper
-                │   ├── input#amigo
-                │   ├── button.button-add
+                ├── p.section-p
+                ├── div.input-container
+                │   ├── div.input-wrapper
+                │   │   ├── input#amigo
+                │   │   └── button.button-add
                 │   └── img.button-restart
                 ├── ul#listaAmigos
                 ├── ul#resultado
@@ -185,9 +188,11 @@ O arquivo [index.html](./index.html) contém a estrutura principal da aplicaçã
     - `<img>`: Imagem representativa do amigo secreto.
   - **`<section>`**: Seção de entrada de dados contendo:
     - `<h2>`: Título da seção.
+    - `<p>`: Parágrafo com instruções.
     - **`<div>`**: Contêiner para os elementos de entrada:
-      - `<input>`: Campo de entrada para digitar o nome do amigo.
-      - `<button>`: Botão para adicionar o amigo à lista.
+      - `<div>:` Contêiner para o campo de entrada e botão de adicionar.
+        - `<input>`: Campo de entrada para digitar o nome do amigo.
+        - `<button>`: Botão para adicionar o amigo à lista.
       - `<img>`: Ícone para reiniciar a lista de amigos.
     - `<ul>`: Lista de amigos adicionados.
     - `<ul>`: Lista para exibir o resultado do sorteio.
@@ -214,68 +219,64 @@ Essa estrutura HTML define a interface do usuário e a interação básica para 
 O arquivo [style.css](./style.css) contém os estilos utilizados na aplicação de sorteio de amigo secreto. Abaixo está uma descrição das principais seções e estilos definidos:
 
 #### Variáveis CSS
-- **`:root`**: Define variáveis de cores para uso em todo o documento.
-  - `--color-primary`: Cor primária (#f79a4f).
-  - `--color-secondary`: Cor secundária (#FFF9EB).
-  - `--color-tertiary`: Cor terciária (#C4C4C4).
-  - `--color-button`: Cor dos botões (#fe652b).
-  - `--color-button-hover`: Cor dos botões ao passar o mouse (#e55720).
-  - `--color-text`: Cor do texto (#444444).
-  - `--color-white`: Cor branca (#FFFFFF).
+- **`:root:`** Define variáveis de cores para uso em todo o documento.
+  - **`--color-primary:`** Cor primária (#f79a4f).
+  - **`--color-secondary:`** Cor secundária (#FFF9EB).
+  - **`--color-tertiary:`** Cor terciária (#C4C4C4).
+  - **`--color-button:`** Cor dos botões (#fe652b).
+  - **`--color-button-hover: Cor dos botões ao passar o mo**`use   - (#e55720).
+  - **`--color-text:`** Cor do texto (#494949).
+  - **`--color-white:`** Cor branca (#FFFFFF).
+  - **`--color-element-border:`** Cor da borda dos elementos (#a8a3a3).
 
 #### Estilos Gerais
 - **`*`**: Remove margens e preenchimentos padrão e define `box-sizing` como `border-box`.
-- **`body`**: Define altura, cor de fundo, e centraliza o conteúdo usando flexbox.
+- **`html:`** Define a altura e largura como 100% da viewport.
+- **`body:`** Define altura, cor de fundo, e centraliza o - conteúdo usando flexbox.
 
 #### Estrutura Principal
-- **`.main-content`**: Define a estrutura principal com flexbox e direção de coluna.
+- **`.main-content:`** Define a estrutura principal com flexbox e direção de coluna.
 
 #### Banner
-- **`.header-banner`**: Estilos para o banner do cabeçalho, incluindo alinhamento, preenchimento e espaçamento.
-- **`.header-banner img`**: Define tamanhos mínimos e máximos para a imagem do banner.
+- **`.header-banner:`** Estilos para o banner do cabeçalho, incluindo alinhamento, preenchimento e espaçamento.
+- **`.header-banner img:`** Define tamanhos mínimos e máximos para a imagem do banner.
 
 #### Seção de Entrada
-- **`.input-section`**: Estilos para a seção de entrada, incluindo cor de fundo, bordas, alinhamento e preenchimento.
+- **`.input-section:`** Estilos para a seção de entrada incluindo cor de fundo, bordas, alinhamento e preenchimento.
 
 #### Títulos
-- **`.main-title`**: Estilos para o título principal, incluindo fonte, tamanho, peso e cor.
-- **`.section-title`**: Estilos para os títulos das seções, incluindo fonte, tamanho, peso e cor.
+- **`.main-title:`** Estilos para o título principal, incluindo fonte, tamanho, peso e cor.
+- **`.section-title:`** Estilos para os títulos das seções, incluindo fonte, tamanho, peso e cor.
+- **`.section-p:`** Estilos para os parágrafos das seções incluindo fonte, tamanho, peso e cor.
 
-#### Contêineres de Entrada e Botão
-- **`.input-wrapper`**: Define o contêiner para os elementos de entrada, incluindo alinhamento e largura.
-- **`.input-name`**: Estilos para o campo de entrada de texto, incluindo preenchimento, bordas e tamanho da fonte.
-- **`.button-container`**: Define o contêiner para os botões, incluindo alinhamento e largura.
+Contêineres de Entrada e Botão
+- **`.input-wrapper:`** Define o contêiner para os elementos de entrada, incluindo alinhamento e largura.
+- **`.input-container:`** Define o contêiner para os elementos de entrada, incluindo largura, alinhamento e espaçamento.
+- **`.input-name:`** Estilos para o campo de entrada de texto, incluindo preenchimento, bordas, tamanho da fonte e sombra.
+- **`.button-container:`** Define o contêiner para os botões, incluindo alinhamento e largura.
 
-#### Estilos de Entrada de Texto
-- **`.input-title`**: Estilos para o título de entrada, incluindo preenchimento, tamanho da fonte, bordas e sombra.
-
-#### Estilos de Botão
-- **`button`**: Estilos gerais para botões, incluindo preenchimento, fonte, bordas, sombra e cursor.
-- **`.button-add`**: Estilos específicos para o botão de adicionar, incluindo cor de fundo e bordas.
-- **`.button-add:hover`**: Estilos para o botão de adicionar ao passar o mouse.
-
-#### Listas
-- **`ul`**: Remove o estilo padrão da lista e define a cor do texto e a fonte.
-- **`.result-list`**: Estilos para a lista de resultados, incluindo margem, cor, tamanho da fonte e peso.
-
-#### Botão de Sortear
-- **`.button-draw`**: Estilos para o botão de sortear, incluindo alinhamento, cor de fundo, tamanho da fonte e espaçamento.
-- **`.button-draw:hover`**: Estilos para o botão de sortear ao passar o mouse.
-
-#### Botão de Reiniciar
-- **`.button-restart`**: Estilos para o botão de reiniciar, incluindo tamanhos máximos e mínimos, margem e cursor.
-- **`.button-restart:hover`**: Estilos para o botão de reiniciar ao passar o mouse.
+Estilos de Botão
+- **`button:`** Estilos gerais para botões, incluindo preenchimento, fonte, bordas, sombra e cursor.
+- **`.button-add:`** Estilos específicos para o botão de adicionar, incluindo cor de fundo, bordas, alinhamento e tamanho da fonte.
+- **`.button-add:hover:`** Estilos para o botão de adicionar ao passar o mouse.
+- **`.button-add:disabled:`** Estilos para o botão de adicionar quando desabilitado.
+- **`.button-draw:`** Estilos para o botão de sortear, incluindo alinhamento, cor de fundo, tamanho da fonte e espaçamento.
+- **`.button-draw:hover:`** Estilos para o botão de sortear ao passar o mouse.
+- **`.button-restart:`** Estilos para o botão de reiniciar, incluindo tamanhos máximos e mínimos, margem e cursor.
+- **`.button-restart:hover:`** Estilos para o botão de reiniciar ao passar o mouse.
+- **`.hidden-button:`** Estilos para botões ocultos, incluindo cor de fundo, tamanho da fonte, bordas e sombra.
+- **`.hidden-button:disabled:`** Estilos para botões ocultos quando desabilitados.
+- **`#limpar-resposta:`** Estilos específicos para o botão de limpar resposta, incluindo cor de fundo, bordas e sombra.
+- **`#limpar-resposta:hover:`** Estilos para o botão de limpar resposta ao passar o mouse.
+Listas
+- **`ul:`** Remove o estilo padrão da lista e define a cor do texto e a fonte.
+- **`.result-list:`** Estilos para a lista de resultados, incluindo margem, cor, tamanho da fonte e peso.
 
 #### Contêiner de Botões Ocultos
-- **`.button-hidden-container`**: Define o contêiner para botões adicionais, incluindo alinhamento e margem.
-- **`.hidden`**: Define a visibilidade oculta.
-- **`.hidden-button`**: Estilos para botões ocultos, incluindo cor de fundo, tamanho da fonte e preenchimento.
-- **`.hidden:hover`**: Estilos para botões ocultos ao passar o mouse.
+- **`.button-hidden-container:`** Define o contêiner para botões adicionais, incluindo alinhamento e margem.
+- **`.hidden:`** Define a visibilidade oculta.
 
-#### Botão de Limpar Resposta
-- **`#limpar-resposta`**: Estilos específicos para o botão de limpar resposta, incluindo cor de fundo.
-- **`#limpar-resposta:hover`**: Estilos para o botão de limpar resposta ao passar o mouse.
-
+<br>
 Essa estrutura CSS define a aparência e o comportamento visual da aplicação de sorteio de amigo secreto.
 
 
