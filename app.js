@@ -19,7 +19,7 @@ const validaDuplicado = amigo => amigos.includes(amigo);
 // aplica validacoes e trata cada amigo no input do usuário
 function validaTrataInput(amigoInput) {
 
-    const amigo = capitalizar(amigoInput.replace(/\s+/g, ' ').trim(););
+    const amigo = capitalizar(amigoInput.replace(/\s+/g, ' ').trim());
 
 
     if (validaCampoVazio(amigo)) {
