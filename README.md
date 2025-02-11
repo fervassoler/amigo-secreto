@@ -297,4 +297,3 @@ Essa estrutura CSS define a aparência e o comportamento visual da aplicação d
     git push origin minha-feature
     ```
 5. Abra um Pull Request
-
