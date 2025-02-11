@@ -91,6 +91,9 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
 ### Estrutura de arquivos
 
     .
+    └── .github                       
+        └── workflows
+            └── deploy.yml             # define o fluxo de deploy para o github pages
     └── assets                         # imagens usadas no projeto
         ├── amigo-secreto.png
         ├── play_circle_outline.png
@@ -106,6 +109,22 @@ Acesse a aplicação através deste [link](https://fervassoler.github.io/amigo-s
 - [style.css](stylecss): Folha de estilo usada no front-end.
 
 --------
+
+### [deploy.yml](./.github/workflows/deploy.yml)
+
+Este projeto utiliza GitHub Actions para automatizar o processo de minificação e deploy para o GitHub Pages. O workflow é definido no arquivo `.github/workflows/deploy.yml` e é executado automaticamente em cada push na branch `main`.
+
+#### Passos do Workflow
+
+1. **Checkout repository**: Faz o checkout do repositório.
+2. **Set up Node.js**: Configura o Node.js na versão 18.
+3. **Install Terser**: Instala a ferramenta Terser globalmente.
+4. **Minify JavaScript**: Minifica o arquivo `app.js` e salva o resultado em `dist/app.min.js`.
+5. **Copy project files**: Copia os arquivos necessários para o diretório `dist`.
+6. **update index.html to min.js**: Atualiza o arquivo `index.html` para usar o arquivo minificado `app.min.js`.
+7. **Deploy to GitHub Pages**: Publica o conteúdo do diretório `dist` no branch `gh-pages`.
+
+O arquivo `deploy.yml` garante que a aplicação esteja sempre atualizada e otimizada para o GitHub Pages.
 
 ### [app.js](./app.js)
 
