@@ -18,17 +18,22 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Terser
+        run: npm install terser -g
+
       - name: Minify JavaScript
         run: |
-          npm install terser
           mkdir -p dist
-          npx terser app.js -o dist/app.min.js
+          terser app.js --compress --mangle -o dist/app.min.js
 
       - name: Copy project files
         run: |
           cp -r assets dist/
           cp index.html dist/
           cp style.css dist/
+      
+      - name: update index.html to min.js
+        run: sed -i 's/app.js/app.min.js/g' dist/index.html
               
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
