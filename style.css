@@ -17,16 +17,18 @@
 }
 
 html {
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
 body {
-    height: 100vh;
     background-color: var(--color-primary);
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: min-content;
+    min-height: min-content;
+    max-height: max-content;
 }
 
 .main-content {
@@ -36,6 +38,8 @@ body {
     height: 100%;
     width: 100%;
     gap: 0px;
+    min-width: fit-content;
+    min-height: fit-content;
 }
 
 /* Banner */
@@ -56,15 +60,16 @@ body {
 
 /* Seção de entrada */
 .input-section {
-    padding-bottom: 0%;
-    flex: 60%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5% 0 5%;
+    padding-bottom: 100%;
+    width: 100%;
     background-color: var(--color-secondary);
     border-radius: 64px 64px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
+    min-width: fit-content;
 }
 
 /* Títulos */
@@ -75,7 +80,6 @@ body {
     font-style: italic;
     color: var(--color-white);
     text-align: center;
-    box-sizing: border-box;
 }
 
 .section-title {
@@ -97,7 +101,7 @@ body {
 }
 
 .input-container{
-    width: 115%;
+    width: 100%;
     max-width: 664px;
     display: flex;
     flex-direction: row;
@@ -110,7 +114,6 @@ body {
 .input-wrapper {
     display: flex;
     justify-content: center;
-    box-sizing: border-box;
     width: 100%;
     max-width: 600px;
     margin-left: 10%;
@@ -140,9 +143,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    gap: 5px;
+    justify-content: space-between;
+    gap: 10px
 }
 
 .button-img {
@@ -169,7 +171,6 @@ button {
     font-size: clamp(8px, 2vw, 16px);
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .button-add:hover {
@@ -209,7 +210,6 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     border: 2px solid var(--color-button);
     box-shadow: 0 4px 8px var(--color-button);
     color: var(--color-white);
@@ -231,6 +231,7 @@ li {
     width: clamp(30px, 10vw, 50px);
     height: clamp(30px, 10vw, 50px);
     cursor: pointer;
+    padding-left: 10px;
 }
 
 .button-restart:hover {
@@ -242,7 +243,8 @@ li {
     align-items: center;
     justify-content: center;
     width: clamp(50px, 100%, 300px);
-    max-height: 55px;
+    max-height: 50px;
+    gap: 1px;
 }
 
 .hidden{
@@ -250,13 +252,12 @@ li {
 }
 
 .hidden-button {
-    box-sizing: border-box;
     border: 2px solid #d38755;
     box-shadow: 0 4px 8px  #d38755;
     width: 50%;
-    height: clamp(30%, 10vw, 80%);
+    height: clamp(25px, 2vw, 50px);
     background-color:#d38755;
-    font-size: clamp(8px, vw, 14px);
+    font-size: clamp(8px, 2vw, 14px);
 }
 
 .hidden-button:disabled{
